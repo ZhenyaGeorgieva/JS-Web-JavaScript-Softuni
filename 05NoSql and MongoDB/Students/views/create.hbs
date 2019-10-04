@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Create Student Page</title>
+  <link href="/css/site.css" type="text/css" rel="stylesheet">
+  <link rel='shortcut icon' type='image/x-icon' href='/images/favicon.png' />
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <ul>
+        <li><img class="logo" src="/images/logo.png"></li>
+        <li><a href="/">Students</a></li>
+        <li><a href="/createStudent">Add student</a></li>
+        <li><a href="/createTeacher">Add teacher</a></li>
+          <li><a href="/getTeachers">View Teachers</a></li>
+      </ul>
+    </header>
+    <main>
+      <h1>Create Student</h1>
+      <div class="form">
+        <form action='/createStudent' method="POST">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name">
+          <label for="image">ImageUrl</label>
+          <input type="text" id="image" name="imageUrl">
+          <label for="facultyNumber">Faculty Number</label>
+          <input type="number" id="facultyNumber" name="facultyNumber">
+          <label for="teacher">Teacher</label>
+          <input type="text" id="teacher" name="teacher">
+           <p>*Available teachers:</p>
+          <ul>{{#each teachers}}
+            <li>{{name}}</li>
+            {{else}}
+            <p>No teachers found!</p>
+            {{/each}}
+          </ul>
+          <input type="submit" value="Create">
+        </form>
+      </div>
+    </main>
+  </div>
+  <footer>@Students: Exercise MongoDB and Mongoose</footer>
+
+</body>
+
+</html>

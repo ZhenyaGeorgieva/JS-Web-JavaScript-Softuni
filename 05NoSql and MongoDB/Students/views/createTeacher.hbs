@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create Teacher Page</title>
+    <link href="/css/site.css" type="text/css" rel="stylesheet">
+    <link rel='shortcut icon' type='image/x-icon' href='/images/favicon.png' />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <ul>
+                <li><img class="logo" src="/images/logo.png"></li>
+                <li><a href="/">Students</a></li>
+                <li><a href="/createStudent">Add student</a></li>
+                <li><a href="/createTeacher">Add teacher</a></li>
+                <li><a href="/getTeachers">View Teachers</a></li>
+            </ul>
+        </header>
+        <main>
+            <h1>Create Teacher</h1>
+            <div class="form">
+                <form action='/createTeacher' method="POST">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name">
+                    <label for="experience">Experience</label>
+                    <input type="text" id="experience" name="experience">
+                    <label for="image">ImageUrl</label>
+                    <input type="text" id="image" name="imageUrl">
+                    <input type="submit" value="Create">
+                </form>
+            </div>
+        </main>
+    </div>
+    <footer>@Students: Exercise MongoDB and Mongoose</footer>
+
+</body>
+
+</html>

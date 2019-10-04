@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Students</title>
+  <link href="/css/site.css" type="text/css" rel="stylesheet">
+  <link rel='shortcut icon' type='image/x-icon' href='/images/favicon.png' />
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <ul>
+        <li><img class="logo" src="/images/logo.png"></li>
+        <li><a href="/">Students</a></li>
+        <li><a href="/createStudent">Add Student</a></li>
+        <li><a href="/createTeacher">Add Teacher</a></li>
+        <li><a href="/getTeachers">View Teachers</a></li>
+      </ul>
+    </header>
+    <main>
+      <h1>Our English Language Students</h1>
+
+      {{#each student}}
+      <div class="cube">
+        <img class="cube" src="{{imageUrl}}">
+        <p class="name">{{name}}</p>
+        <p><span>Faculty Number:</span> {{facultyNumber}}</p>
+        <a class="btn" href="/details/{{id}}">Details</a>
+      </div>
+      {{/each}}
+    </main>
+  </div>
+  <footer>@Students: Exercise MongoDB and Mongoose</footer>
+</body>
+
+</html>
