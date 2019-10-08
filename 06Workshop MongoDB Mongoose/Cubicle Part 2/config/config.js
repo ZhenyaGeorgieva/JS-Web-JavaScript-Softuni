@@ -3,7 +3,7 @@ const env=process.env.NODE_ENV || 'development';
 const config = {
     development: {
         port: process.env.PORT || 3000,
-        dbUrl:'mongodb://localhost:27017/softuni'
+        dbUrl:'mongodb://localhost:27017/workshop'
     },
     production: {}
 };

@@ -11,19 +11,23 @@ const cubeSchema = new mongoose.Schema({
     //   message: props=>`${props.value} is not a valid phone number!`
     // },
   },
-  description: String,
+  description: {
+    type: String,
+    required: true,
+    validate: {
+      validator: function () {
+        return this.description.length <= 20;
+      },
+      message: 'Description must be less than 20 symbols long!'
+    }
+  },
   imageUrl: String,
   difficultyLevel: Number,
-  accessories:[{
-    type: mongoose.Schema.Types.ObjectId,
+  accessories: [{
+    type: mongoose.Types.ObjectId,
     ref: 'Accessories'
   }]
-  //accessories: mongoose.Types.ObjectId
 });
-
-cubeSchema.methods.getDescription = function () {
-  return this.description;
-};
 
 module.exports = mongoose.model('Cube', cubeSchema);
 

@@ -21,6 +21,13 @@
     </header>
     <main>
       <h1>Browser</h1>
+      <form action="" method="">
+        <input type="text" class="search" name="search" placeholder="Search..." value="{{search}}">
+        <input type="number" name="from" class="difficulty" placeholder="Difficulty from..." value="{{from}}">
+        <span>-</span>
+        <input type="number" name="to" class="difficulty" placeholder="Difficulty to..." value="{{to}}">
+        <input type="submit" value="search">
+      </form>
 
       {{#each cubes}}
       <div class="cube">
@@ -28,6 +35,7 @@
         <p class="name">{{this.name}}</p>
         <p><span>Difficulty level:</span> {{this.difficultyLevel}}</p>
         <a class="btn" href="/details/{{this.id}}">Details</a>
+        <a class="btn" href="/attach/accessory/{{this.id}}">Attach</a>
       </div>
       {{/each}}
 
