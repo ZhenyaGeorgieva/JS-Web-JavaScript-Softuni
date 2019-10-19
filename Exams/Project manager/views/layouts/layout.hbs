@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Projects Manager</title>
+    <link href="/css/site.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li><a href="/">Home</a></li>
+            {{#if admin}}
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/teams">Teams</a></li>
+            <li><a href="/createTeam">Create Team</a></li>
+            <li><a href="/createProject">Create Project</a></li>
+            <div class="right">
+                <li>Welcome, ADMIN!</li>
+                <li><a href="/profile/{{admin._id}}">Profile</a></li>
+                <li>
+                    <a href='/logout'>Logout</a>
+                </li>
+            </div>
+            {{else if user}}
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/teams">Teams</a></li>
+            <div class="right">
+                <li>Welcome, {{user.username}}!</li>
+                <li><a href="/profile/{{user._id}}">Profile</a></li>
+                <li>
+                    <a href='/logout'>Logout</a>
+                </li>
+            </div>
+            {{else}}
+             <div class="right">
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            </div>
+            {{/if}}
+        </ul>
+    </header>
+     {{#if errors.name}}
+    <div id="notifications">
+      <p id="notification-message">{{errors.name.message}}</p>
+    </div>
+    {{/if}}
+    {{#if errors.description}}
+    <div id="notifications">
+      <p id="notification-message">{{errors.description.message}}</p>
+    </div>
+    {{/if}}
+    {{#if errors.imageUrl}}
+    <div id="notifications">
+      <p id="notification-message">{{errors.imageUrl.message}}</p>
+    </div>
+    {{/if}}
+    {{#if loginMessage}}
+    <div id="notifications">
+      <p id="notification-message">{{loginMessage}}</p>
+    </div>
+    {{/if}}
+    {{#if errors.username}}
+    <div id="notifications">
+      <p id="notification-message">{{errors.username.message}}</p>
+    </div>
+    {{/if}}
+    {{#if errors.password}}
+    <div id="notifications">
+      <p id="notification-message">{{errors.password.message}}</p>
+    </div>
+    {{/if}}
+    {{#if errors.repeatPassword}}
+    <div id="notifications">
+      <p id="notification-message">{{errors.repeatPassword}}</p>
+    </div>
+    {{/if}}
+    {{#if errors.usernameTaken}}
+    <div id="notifications">
+      <p id="notification-message">{{errors.usernameTaken}}</p>
+    </div>
+    {{/if}}
+    <main>
+        {{{body}}}
+    </main>
+    <footer>
+        Express Exam @SoftUni
+    </footer>
+</body>
+
+</html>

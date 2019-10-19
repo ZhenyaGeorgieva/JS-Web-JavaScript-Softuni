@@ -1,0 +1,32 @@
+<h1>Teams</h1>
+<form class="search">
+    <label>Seach: </label>
+    <input type="text">
+    <input type="submit" value="Search">
+</form>
+
+{{#each teams}}
+<div class="teams">
+    <div class="team">
+        <h2>{{this.name}}</h2>
+        <div class="team-info">
+            <h3>Members</h3>
+            {{#each this.members}}
+            <p>Username:{{this.username}}/First Name:{{this.firstName}}/Last Name:{{this.lastName}}</p>
+            {{else}}
+            <p>NO members yet</p>
+            {{/each}}
+        </div>
+        <div class="team-info">
+            <h3>Projects</h3>
+            {{#each this.projects}}
+            <p>{{this.name}}-{{this.description}}</p>
+            {{else}}
+            <p>NO projects yet</p>
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{else}}
+<p>NO TEAMS TO DISPLAY</p>
+{{/each}}
