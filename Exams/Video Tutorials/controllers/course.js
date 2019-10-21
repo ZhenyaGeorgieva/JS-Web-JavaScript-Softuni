@@ -3,8 +3,9 @@ const models = require('../models');
 function index(req, res, next) {
   const user = req.user;
   if (!user) {
-    models.courseModel.find({ public: true }).sort({ users: -1 }).limit(3)
+    models.courseModel.find({ public: true }).populate('users').limit(3)
       .then(courses => {
+        courses = courses.sort((a, b) => b.users.length - a.users.length);
         res.render('index.hbs', { courses });
       }).catch(next);
   }
@@ -80,14 +81,14 @@ function details(req, res, next) {
   let user = req.user;
   let courseId = req.params.id;
 
-  models.courseModel.findOne({ _id: courseId,users:{$in:user}}).populate('lectures')
+  models.courseModel.findOne({ _id: courseId, users: { $in: user } }).populate('lectures')
     .then(course => {
       if (!course) {
-        models.courseModel.findOne({ _id: courseId}).then(course=>{
-          res.render('details.hbs', { user,course })
-        }).catch(next)  
+        models.courseModel.findOne({ _id: courseId }).then(course => {
+          res.render('details.hbs', { user, course })
+        }).catch(next)
       } else {
-        res.render('details.hbs', {user, enrolled:true,course })
+        res.render('details.hbs', { user, enrolled: true, course })
       }
     }).catch(next)
 }
