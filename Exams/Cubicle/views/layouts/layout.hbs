@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cubicle</title>
+  <link href="/css/site.css" type="text/css" rel="stylesheet">
+  <link rel='shortcut icon' type='image/x-icon' href='/images/favicon.png' />
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <ul>
+        <li><img class="logo" src="./images/logo.png"></li>
+
+
+        {{#if user}}
+        <li><a>Hello, user{{user.username}}!</a></li>
+        <li><a href="/">Browse</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/create">Create Cube</a></li>
+        <li><a href="/create/accessory">Create Accessory</a></li>
+        <li><a href="/logout">Logout</a></li>
+        {{else}}
+        <li><a href="/">Browse</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+        {{/if}}
+      </ul>
+    </header>
+    {{#if errors.name}}
+    <div id="notifications">
+      <p id="notification-message">{{errors.name.message}}</p>
+    </div>
+    {{/if}}
+    {{#if errors.description}}
+    <div id="notifications">
+      <p id="notification-message">{{errors.description.message}}</p>
+    </div>
+    {{/if}}
+    {{#if errors.imageUrl}}
+    <div id="notifications">
+      <p id="notification-message">{{errors.imageUrl.message}}</p>
+    </div>
+    {{/if}}
+    {{#if errors.username}}
+    <div id="notifications">
+      <p id="notification-message">{{errors.username.message}}</p>
+    </div>
+    {{/if}}
+    {{#if errors.password}}
+    <div id="notifications">
+      <p id="notification-message">{{errors.password.message}}</p>
+    </div>
+    {{/if}}
+    {{#if errors.repeatPassword}}
+    <div id="notifications">
+      <p id="notification-message">{{errors.repeatPassword}}</p>
+    </div>
+    {{/if}}
+    {{#if errors.usernameTaken}}
+    <div id="notifications">
+      <p id="notification-message">{{errors.usernameTaken}}</p>
+    </div>
+    {{/if}}
+    <main>
+      {{{body}}}
+    </main>
+  </div>
+  <footer>@Cubicle: Exercise for Express.js and Handlebars</footer>
+</body>
+
+</html>
